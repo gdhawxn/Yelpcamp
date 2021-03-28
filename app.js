@@ -10,7 +10,6 @@ app.locals.moment = require('moment');
 app.use(flash());
 
 mongoose.connect(process.env.DATABASEURL);
-// mongoose.connect("mongodb://gaurav:gauravdhawan8527@ds247410.mlab.com:47410/yelpcamp8527");
 
 var camp = require('./models/campgrounds');
 
