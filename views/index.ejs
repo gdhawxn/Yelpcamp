@@ -1,0 +1,34 @@
+<%include partials/header%>
+<style>
+    #cover{
+        opacity:0;
+    }
+    .thumbnail:hover #cover{
+        opacity:1;
+    }
+</style>
+<div class="container">
+<div class="container">
+    <header class="jumbotron">
+        <h1>Welcome to YelpC<i class="fa fa-tree"></i>mp!</h1>
+        <p>Hand-picked CampGrounds for you.</p>
+        <p><a class="btn btn-primary btn-lg" href="index/new">Add new Campground!</a></p>
+    </header>
+</div>
+<div class="row text-center" style="display:flex ; flex-wrap:wrap">
+    <%cgs.forEach(function(camp){%>
+    <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+        <div class="w3-display-container w3-card-4 w3-text-white">
+        <img class="w3-hover-grayscale image"src=<%=camp['image']%>/>
+        <div id="cover">
+        <div class="w3-display-bottomleft w3-container"><p><%=camp['name']%></p></div>
+        <div class="w3-display-bottomright w3-container more"><a href="/index/<%=camp._id%>" class="btn btn-primary">More...</a></div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <% }); %>
+</div>
+</div>
+<%include partials/footer%>

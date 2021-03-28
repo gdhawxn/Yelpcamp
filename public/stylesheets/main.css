@@ -1,0 +1,15 @@
+.thumbnail img{
+    width: 100%;
+}
+.selected{
+    display:none;
+}
+.thumbnail{
+    padding: 0;
+}
+.caption-full{
+    padding: 10px;
+}
+.more{
+    margin-bottom: 10px;
+}

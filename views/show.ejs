@@ -1,0 +1,59 @@
+<%include partials/header%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Yelpc<i class="fa fa-tree"></i>mp</p>
+            <div class="list-group">
+                <li class="list-group-item active">
+                    Info
+                </li>
+                <li class="list-group-item">
+                    Info
+                </li>
+                <li class="list-group-item">
+                    Info
+                </li>
+            </div>
+        </div>
+        <div class="col-md-9">
+                <div class='thumbnail'>
+                    <img class="image-responsive" src=<%=c['image']%>/>
+                    <div class="caption-full">
+                    <h4 class="pull-right">Rs. <%=c['price']%> (per night)</h4>
+                    <h4><a><%=c['name']%></a></h4>
+                    <p><%=c['description']%></p>
+                    <%if(currentUser){%>
+                    <% if(c.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-warning" href="/index/<%=c._id%>/edit">Edit</a>
+                        <a class="btn btn-danger" href="/index/<%=c._id%>/delete">Delete</a>
+                    <% } %>
+                    <% } %>
+                </div>
+                </div>
+                <div class="well">
+                    <div class="text-right"><a href='/index/<%=c._id%>/comments/new' class="btn btn-success">Comment</a>
+</div>
+                <hr>
+                <%for(var i=0;i<c.comments.length;i++){%>
+                <div class="row">
+                    <div class="col-md-12">
+                        <b><%=c.comments[i].author.username%> :</b>
+                        <span class="pull-right">10 days ago</span>
+                        <p>
+                            <%=c.comments[i].text%>
+                        </p>
+                        <% if(currentUser){ %>
+                        <% if(c.comments[i].author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-warning btn-xs" href="/index/<%=c._id%>/comments/<%=c.comments[i]._id%>/edit">Edit</a>
+                        <a class="btn btn-danger btn-xs" href="/index/<%=c._id%>/comments/<%=c.comments[i]._id%>/delete">Delete</a>
+                        <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                <hr>
+                <% } %>
+                </div>
+                </div>
+            </div>
+    </div>
+<%include partials/footer%>
